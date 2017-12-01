@@ -1,0 +1,60 @@
+.header {
+	display: flex;
+}
+
+.color_change, .size_change {
+    height: 20vh;
+    width: 50%;
+    border: 1px solid white;
+    background-color: black;
+}
+
+h2 {
+    color: white;
+    text-align: center;
+}
+
+.colors {
+    display: flex;
+    justify-content: center;
+}
+
+.color {
+    height: 10vh;
+    width: 16%;
+    display: inline-block;
+    border: 1px solid white;
+}
+
+#red {
+    background-color: red;
+}
+
+#green {
+    background-color: green;
+}
+
+#blue {
+    background-color: blue;
+}
+
+#orange {
+    background-color: orange;
+}
+
+#purple {
+    background-color: purple;
+}
+
+#gray {
+    background-color: gray;
+}
+
+.slider {
+	width: 100%;
+	padding: 5%;
+}
+
+.size {
+	width: 90%;
+}
