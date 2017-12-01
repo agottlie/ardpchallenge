@@ -8,14 +8,16 @@ $(() => {
     document.body.appendChild(renderer.domElement);
 
     let colorValue = "#ff0000";
+    let scale = 1;
 
     setInterval(function() {
-        var geometry = new THREE.BoxGeometry(1, 1, 1);
+        var geometry = new THREE.BoxGeometry(1,1,1);
         var material = new THREE.MeshBasicMaterial({ color: colorValue });
         var cube = new THREE.Mesh(geometry, material);
         camera.position.z = 5;
         cube.position.y = (Math.random() * 4) - 1;
         cube.position.x = (Math.random() * 10) - 5;
+        cube.scale.set(scale,scale,scale);
         scene.add(cube);
 
         var animate = function() {
@@ -25,8 +27,9 @@ $(() => {
             cube.rotation.y += Math.random() * 0.1;
 
             geometry.colorsNeedUpdate = true;
+            geometry.verticesNeedUpdate = true;
 
-            render()
+            render();
         };
 
         animate();
@@ -34,32 +37,41 @@ $(() => {
 	    $('#red').on('click', (e) => {
 	        cube.material.color.setHex(0xff0000);
 	        colorValue = "#ff0000"
-	    })
+	    });
 
 	    $('#green').on('click', (e) => {
 	        cube.material.color.setHex(0x008000);
 	        colorValue = "#008000"
-	    })
+	    });
 
 	    $('#blue').on('click', (e) => {
 	        cube.material.color.setHex(0x0000ff);
 	        colorValue = "#0000ff"
-	    })
+	    });
 
 	    $('#orange').on('click', (e) => {
 	        cube.material.color.setHex(0xffa500);
 	        colorValue = "#ffa500"
-	    })
+	    });
 
 	    $('#purple').on('click', (e) => {
 	        cube.material.color.setHex(0x800080);
 	        colorValue = "#800080"
-	    })
+	    });
 
 	    $('#gray').on('click', (e) => {
 	        cube.material.color.setHex(0x808080);
 	        colorValue = "#808080"
-	    })
+            
+	    });
+
+        $(document).on('input', '.size', function() {
+            let newScale = $(this).val();
+            cube.scale.set(newScale, newScale, newScale);
+            scale = newScale;
+        });
+
+
 
     }, 1000);
 
